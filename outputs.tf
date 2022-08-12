@@ -1,0 +1,30 @@
+output "express_route_circuit_id" {
+  description = "The ID of the ExpressRoute circuit"
+  value       = azurerm_express_route_circuit.erc.id
+}
+
+output "express_route_circuit_name" {
+  description = "Name of the ExpressRoute circuit"
+  value       = azurerm_express_route_circuit.erc.name
+}
+
+output "express_route_circuit_service_provider_provisioning_state" {
+  description = "The ExpressRoute circuit provisioning state from your chosen service provider"
+  value       = azurerm_express_route_circuit.erc.service_provider_provisioning_state
+}
+
+output "express_route_circuit_service_key" {
+  description = "The string needed by the service provider to provision the ExpressRoute circuit"
+  value       = azurerm_express_route_circuit.erc.service_key
+  sensitive   = true
+}
+
+output "subnet_gateway_id" {
+  description = "ID of the Gateway Subnet ID"
+  value       = try(module.subnet_gateway["subnet_gateway"].id, null)
+}
+
+output "express_route_gateway_id" {
+  description = "ID of the ExpressRoute Gateway"
+  value       = try(azurerm_virtual_network_gateway.er_gateway["vgw"].id, null)
+}
