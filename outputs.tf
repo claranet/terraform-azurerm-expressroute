@@ -19,6 +19,11 @@ output "express_route_circuit_service_key" {
   sensitive   = true
 }
 
+output "express_route_peering_azure_asn" {
+  description = "ASN (Autonomous System Number) Used by Azure for BGP Peering"
+  value       = try({ for k, v in azurerm_express_route_circuit_peering.ercp : k => v.azure_asn }, null)
+}
+
 output "subnet_gateway_id" {
   description = "ID of the Gateway Subnet ID"
   value       = try(module.subnet_gateway["subnet_gateway"].id, null)

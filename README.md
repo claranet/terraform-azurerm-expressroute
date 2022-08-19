@@ -189,6 +189,7 @@ module "express_route" {
 | express\_route\_circuit\_service\_key | The string needed by the service provider to provision the ExpressRoute circuit |
 | express\_route\_circuit\_service\_provider\_provisioning\_state | The ExpressRoute circuit provisioning state from your chosen service provider |
 | express\_route\_gateway\_id | ID of the ExpressRoute Gateway |
+| express\_route\_peering\_azure\_asn | ASN (Autonomous System Number) Used by Azure for BGP Peering |
 | subnet\_gateway\_id | ID of the Gateway Subnet ID |
 <!-- END_TF_DOCS -->
 ## Related documentation
