@@ -31,5 +31,5 @@ output "subnet_gateway_id" {
 
 output "express_route_gateway_id" {
   description = "ID of the ExpressRoute Gateway"
-  value       = try(azurerm_virtual_network_gateway.er_gateway["vgw"].id, null)
+  value       = try(azurerm_virtual_network_gateway.ergw["ergw"].id, null)
 }

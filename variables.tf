@@ -29,12 +29,12 @@ variable "location_short" {
 }
 
 variable "service_provider_name" {
-  description = "The name of the ExpressRoute Service Provide"
+  description = "The name of the ExpressRoute [Service Provider](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-locations-providers#partners)."
   type        = string
 }
 
 variable "peering_location" {
-  description = "The name of the peering location"
+  description = "The name of the peering [location](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-locations#locations)."
   type        = string
 }
 
@@ -44,7 +44,7 @@ variable "bandwidth_in_mbps" {
 }
 
 variable "express_route_sku" {
-  description = "ExpressRoute SKU"
+  description = "ExpressRoute SKU. Possible values are [here](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/express_route_circuit#sku)."
   type = object({
     tier   = string,
     family = string
@@ -73,7 +73,7 @@ variable "subnet_gateway_id" {
 }
 
 variable "public_ip_sku" {
-  description = "SKU of public IP resource"
+  description = "SKU of public IP resource. Possible values are `Basic` or `Standard`."
   type        = string
   default     = "Basic"
 }
@@ -86,8 +86,8 @@ variable "public_ip_allocation_method" {
 
 variable "public_ip_zones" {
   description = "List of availability zone for the public IP resource"
-  type        = list(string)
-  default     = ["1", "2", "3"]
+  type        = list(number)
+  default     = [1, 2, 3]
 }
 
 variable "active_active_enabled" {
@@ -97,7 +97,7 @@ variable "active_active_enabled" {
 }
 
 variable "express_route_gateway_sku" {
-  description = "SKU of the virtual network gateway resource"
+  description = "SKU of the virtual network gateway resource. Possible values are [here](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-about-virtual-network-gateways#gwsku)."
   type        = string
   default     = "Standard"
 }
@@ -120,7 +120,7 @@ variable "express_route_circuit_peerings" {
 }
 
 variable "express_route_circuit_peering_enabled" {
-  description = "Enable or disable Express Route Circuit Peering configuration (Should be disable at start and when the ExpressRoute circuit status is 'Provisioned', enable it)"
+  description = "Enable or disable Express Route Circuit Peering configuration (Should be disable at start. When the ExpressRoute circuit status is 'Provisioned', enable it)"
   type        = bool
 }
 

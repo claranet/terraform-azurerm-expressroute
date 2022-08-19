@@ -126,12 +126,14 @@ module "express_route" {
 | Name | Type |
 |------|------|
 | [azurecaf_name.erc](https://registry.terraform.io/providers/aztfmod/azurecaf/latest/docs/resources/name) | resource |
+| [azurecaf_name.ergw](https://registry.terraform.io/providers/aztfmod/azurecaf/latest/docs/resources/name) | resource |
+| [azurecaf_name.ergw_connection](https://registry.terraform.io/providers/aztfmod/azurecaf/latest/docs/resources/name) | resource |
+| [azurecaf_name.ergw_ipconfig](https://registry.terraform.io/providers/aztfmod/azurecaf/latest/docs/resources/name) | resource |
 | [azurecaf_name.pub_ip](https://registry.terraform.io/providers/aztfmod/azurecaf/latest/docs/resources/name) | resource |
-| [azurecaf_name.vgw](https://registry.terraform.io/providers/aztfmod/azurecaf/latest/docs/resources/name) | resource |
 | [azurerm_express_route_circuit.erc](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/express_route_circuit) | resource |
 | [azurerm_express_route_circuit_peering.ercp](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/express_route_circuit_peering) | resource |
 | [azurerm_public_ip.public_ip](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/public_ip) | resource |
-| [azurerm_virtual_network_gateway.er_gateway](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_network_gateway) | resource |
+| [azurerm_virtual_network_gateway.ergw](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_network_gateway) | resource |
 | [azurerm_virtual_network_gateway_connection.er_gateway_connection](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_network_gateway_connection) | resource |
 
 ## Inputs
@@ -144,20 +146,20 @@ module "express_route" {
 | custom\_diagnostic\_settings\_name | Custom name of the diagnostics settings, name will be 'default' if not set. | `string` | `"default"` | no |
 | custom\_express\_route\_circuit\_name | Custom ExpressRoute Circuit resource name | `string` | `null` | no |
 | custom\_express\_route\_gateway\_connection\_name | Custom ExpressRoute Gateway connection resource name | `string` | `null` | no |
-| custom\_express\_route\_ipconfig\_name | Custom ExpressRoute Gateway IP config name | `string` | `null` | no |
+| custom\_express\_route\_gateway\_ipconfig\_name | Custom ExpressRoute Gateway IP config name | `string` | `null` | no |
+| custom\_express\_route\_gateway\_name | Custom ExpressRoute gateway resource name | `string` | `null` | no |
 | custom\_public\_ip\_name | Custom public IP resource name | `string` | `null` | no |
-| custom\_virtual\_network\_gateway\_name | Custom virtual network gateway resource name | `string` | `null` | no |
 | default\_tags\_enabled | Option to enable or disable default tags | `bool` | `true` | no |
 | environment | Name of application's environment. | `string` | n/a | yes |
 | express\_route\_circuit\_extra\_tags | Extra tags to add for ExpressRoute Circuit resource | `map(string)` | `{}` | no |
-| express\_route\_circuit\_peering\_enabled | Enable or disable Express Route Circuit Peering configuration (Should be disable at start and when the ExpressRoute circuit status is 'Provisioned', enable it) | `bool` | n/a | yes |
+| express\_route\_circuit\_peering\_enabled | Enable or disable Express Route Circuit Peering configuration (Should be disable at start. When the ExpressRoute circuit status is 'Provisioned', enable it) | `bool` | n/a | yes |
 | express\_route\_circuit\_peerings | Configuration block of Private, Public and Microsoft ExpressRoute Circuit Peerings | <pre>list(object({<br>    peering_type                  = string<br>    primary_peer_address_prefix   = string<br>    secondary_peer_address_prefix = string<br>    peer_asn                      = number<br>    vlan_id                       = number<br>    shared_key                    = optional(string)<br>    microsoft_peering_config = optional(object({<br>      advertised_public_prefixes = list(string)<br>      customer_asn               = optional(number)<br>      routing_registry_name      = optional(string)<br>    }))<br>  }))</pre> | n/a | yes |
 | express\_route\_gateway\_connection\_extra\_tags | Extra tags to add for ExpressRoute Gateway connection resource | `map(string)` | `{}` | no |
 | express\_route\_gateway\_connection\_route\_weight | The routing weight of the ExpressRoute Gateway connection | `number` | `10` | no |
 | express\_route\_gateway\_enabled | Enable or disable creation of the Virtual Network Gateway | `bool` | `true` | no |
 | express\_route\_gateway\_extra\_tags | Extra tags to add for Virtual Network Gateway resource | `map(string)` | `{}` | no |
-| express\_route\_gateway\_sku | SKU of the virtual network gateway resource | `string` | `"Standard"` | no |
-| express\_route\_sku | ExpressRoute SKU | <pre>object({<br>    tier   = string,<br>    family = string<br>  })</pre> | <pre>{<br>  "family": "MeteredData",<br>  "tier": "Standard"<br>}</pre> | no |
+| express\_route\_gateway\_sku | SKU of the virtual network gateway resource. Possible values are [here](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-about-virtual-network-gateways#gwsku). | `string` | `"Standard"` | no |
+| express\_route\_sku | ExpressRoute SKU. Possible values are [here](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/express_route_circuit#sku). | <pre>object({<br>    tier   = string,<br>    family = string<br>  })</pre> | <pre>{<br>  "family": "MeteredData",<br>  "tier": "Standard"<br>}</pre> | no |
 | extra\_tags | Extra tags to add | `map(string)` | `{}` | no |
 | location | Azure location. | `string` | n/a | yes |
 | location\_short | Short string for Azure location. | `string` | n/a | yes |
@@ -167,13 +169,13 @@ module "express_route" {
 | logs\_retention\_days | Number of days to keep logs on storage account | `number` | `30` | no |
 | name\_prefix | Optional prefix for the generated name | `string` | `""` | no |
 | name\_suffix | Optional suffix for the generated name | `string` | `""` | no |
-| peering\_location | The name of the peering location | `string` | n/a | yes |
+| peering\_location | The name of the peering [location](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-locations#locations). | `string` | n/a | yes |
 | public\_ip\_allocation\_method | Defines the allocation method for this IP address. Possible values are `Static` or `Dynamic`. | `string` | `"Dynamic"` | no |
 | public\_ip\_extra\_tags | Extra tags to add for public IP resource | `map(string)` | `{}` | no |
-| public\_ip\_sku | SKU of public IP resource | `string` | `"Basic"` | no |
-| public\_ip\_zones | List of availability zone for the public IP resource | `list(string)` | <pre>[<br>  "1",<br>  "2",<br>  "3"<br>]</pre> | no |
+| public\_ip\_sku | SKU of public IP resource. Possible values are `Basic` or `Standard`. | `string` | `"Basic"` | no |
+| public\_ip\_zones | List of availability zone for the public IP resource | `list(number)` | <pre>[<br>  1,<br>  2,<br>  3<br>]</pre> | no |
 | resource\_group\_name | Name of the application's resource group. | `string` | n/a | yes |
-| service\_provider\_name | The name of the ExpressRoute Service Provide | `string` | n/a | yes |
+| service\_provider\_name | The name of the ExpressRoute [Service Provider](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-locations-providers#partners). | `string` | n/a | yes |
 | stack | Name of application's stack. | `string` | n/a | yes |
 | subnet\_gateway\_cidr | The address prefix list to use for the subnet | `list(string)` | `null` | no |
 | subnet\_gateway\_id | ID of an existing subnet gateway | `string` | `null` | no |

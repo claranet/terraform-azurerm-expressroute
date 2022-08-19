@@ -22,8 +22,8 @@ variable "custom_express_route_circuit_name" {
   default     = null
 }
 
-variable "custom_virtual_network_gateway_name" {
-  description = "Custom virtual network gateway resource name"
+variable "custom_express_route_gateway_name" {
+  description = "Custom ExpressRoute gateway resource name"
   type        = string
   default     = null
 }
@@ -34,7 +34,7 @@ variable "custom_public_ip_name" {
   default     = null
 }
 
-variable "custom_express_route_ipconfig_name" {
+variable "custom_express_route_gateway_ipconfig_name" {
   description = "Custom ExpressRoute Gateway IP config name"
   type        = string
   default     = null
