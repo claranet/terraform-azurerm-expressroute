@@ -102,7 +102,7 @@ variable "express_route_gateway_sku" {
   default     = "Standard"
 }
 
-variable "express_route_circuit_peering" {
+variable "express_route_circuit_peerings" {
   description = "Configuration block of Private, Public and Microsoft ExpressRoute Circuit Peerings"
   type = list(object({
     peering_type                  = string

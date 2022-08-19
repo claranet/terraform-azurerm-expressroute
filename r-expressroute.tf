@@ -17,7 +17,7 @@ resource "azurerm_express_route_circuit" "erc" {
 }
 
 resource "azurerm_express_route_circuit_peering" "ercp" {
-  for_each = var.express_route_circuit_peering_enabled ? { for peering in var.express_route_circuit_peering : peering.peering_type => peering } : {}
+  for_each = var.express_route_circuit_peering_enabled ? { for peering in var.express_route_circuit_peerings : peering.peering_type => peering } : {}
 
   express_route_circuit_name = azurerm_express_route_circuit.erc.name
   resource_group_name        = var.resource_group_name
@@ -32,7 +32,7 @@ resource "azurerm_express_route_circuit_peering" "ercp" {
   route_filter_id = each.value.peering_type == "MicrosoftPeering" ? lookup(each.value, "route_filter_id", null) : null
 
   dynamic "microsoft_peering_config" {
-    for_each = each.value.peering_type == "MicrosoftPeering" && each.value.microsoft_peering_config != null ? ["microsoft_peering_config"] : []
+    for_each = each.value.peering_type == "MicrosoftPeering" && each.value.microsoft_peering_config != null ? [each.value.microsoft_peering_config] : []
 
     content {
       advertised_public_prefixes = lookup(microsoft_peering_config.value, "advertised_public_prefixes", null)

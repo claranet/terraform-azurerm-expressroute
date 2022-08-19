@@ -68,7 +68,7 @@ module "express_route" {
 
   # Enable when the ExpressRoute Circuit status is provisioned
   express_route_circuit_peering_enabled = false
-  express_route_circuit_peering = [
+  express_route_circuit_peerings = [
     {
       peering_type                  = "AzurePrivatePeering"
       primary_peer_address_prefix   = "169.254.00.0/30"

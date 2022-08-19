@@ -95,7 +95,7 @@ module "express_route" {
 
   # Enable when the ExpressRoute Circuit status is provisioned
   express_route_circuit_peering_enabled = false
-  express_route_circuit_peering = [
+  express_route_circuit_peerings = [
     {
       peering_type                  = "AzurePrivatePeering"
       primary_peer_address_prefix   = "169.254.00.0/30"
@@ -150,8 +150,8 @@ module "express_route" {
 | default\_tags\_enabled | Option to enable or disable default tags | `bool` | `true` | no |
 | environment | Name of application's environment. | `string` | n/a | yes |
 | express\_route\_circuit\_extra\_tags | Extra tags to add for ExpressRoute Circuit resource | `map(string)` | `{}` | no |
-| express\_route\_circuit\_peering | Configuration block of Private, Public and Microsoft ExpressRoute Circuit Peerings | <pre>list(object({<br>    peering_type                  = string<br>    primary_peer_address_prefix   = string<br>    secondary_peer_address_prefix = string<br>    peer_asn                      = number<br>    vlan_id                       = number<br>    shared_key                    = optional(string)<br>    microsoft_peering_config = optional(object({<br>      advertised_public_prefixes = list(string)<br>      customer_asn               = optional(number)<br>      routing_registry_name      = optional(string)<br>    }))<br>  }))</pre> | n/a | yes |
 | express\_route\_circuit\_peering\_enabled | Enable or disable Express Route Circuit Peering configuration (Should be disable at start and when the ExpressRoute circuit status is 'Provisioned', enable it) | `bool` | n/a | yes |
+| express\_route\_circuit\_peerings | Configuration block of Private, Public and Microsoft ExpressRoute Circuit Peerings | <pre>list(object({<br>    peering_type                  = string<br>    primary_peer_address_prefix   = string<br>    secondary_peer_address_prefix = string<br>    peer_asn                      = number<br>    vlan_id                       = number<br>    shared_key                    = optional(string)<br>    microsoft_peering_config = optional(object({<br>      advertised_public_prefixes = list(string)<br>      customer_asn               = optional(number)<br>      routing_registry_name      = optional(string)<br>    }))<br>  }))</pre> | n/a | yes |
 | express\_route\_gateway\_connection\_extra\_tags | Extra tags to add for ExpressRoute Gateway connection resource | `map(string)` | `{}` | no |
 | express\_route\_gateway\_connection\_route\_weight | The routing weight of the ExpressRoute Gateway connection | `number` | `10` | no |
 | express\_route\_gateway\_enabled | Enable or disable creation of the Virtual Network Gateway | `bool` | `true` | no |
