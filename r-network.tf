@@ -34,7 +34,7 @@ resource "azurerm_virtual_network_gateway" "er_gateway" {
     for_each = var.express_route_gateway_sku != "Standard" && var.active_active_enabled ? ["1", "2"] : ["1"]
 
     content {
-      name                 = "${local.pub_ip_name}-${ip_configuration.key}"
+      name                 = "${local.express_route_gateway_ipconfig_name}-0${ip_configuration.value}"
       public_ip_address_id = azurerm_public_ip.public_ip[ip_configuration.value].id
       subnet_id            = var.subnet_gateway_cidr != null ? module.subnet_gateway["subnet_gateway"].subnet_id : var.subnet_gateway_id
     }
@@ -48,8 +48,9 @@ resource "azurerm_public_ip" "public_ip" {
   name                = "${local.pub_ip_name}-0${each.value}"
   location            = var.location
   resource_group_name = var.resource_group_name
-  allocation_method   = "Static"
+  allocation_method   = var.public_ip_allocation_method
   sku                 = var.public_ip_sku
+  zones               = var.public_ip_sku == "Standard" ? var.public_ip_zones : null
 
   tags = merge(local.default_tags, var.extra_tags, var.public_ip_extra_tags)
 }

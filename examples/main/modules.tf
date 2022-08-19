@@ -61,7 +61,7 @@ module "express_route" {
 
   service_provider_name = "Equinix"
   peering_location      = "London"
-  bandwidth_in_mbps     = "50"
+  bandwidth_in_mbps     = 50
 
   virtual_network_name = module.azure_virtual_network.virtual_network_name
   subnet_gateway_cidr  = ["10.10.0.0/27"]

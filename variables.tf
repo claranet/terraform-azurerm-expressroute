@@ -75,7 +75,19 @@ variable "subnet_gateway_id" {
 variable "public_ip_sku" {
   description = "SKU of public IP resource"
   type        = string
-  default     = "Standard"
+  default     = "Basic"
+}
+
+variable "public_ip_allocation_method" {
+  description = "Defines the allocation method for this IP address. Possible values are `Static` or `Dynamic`."
+  type        = string
+  default     = "Dynamic"
+}
+
+variable "public_ip_zones" {
+  description = "List of availability zone for the public IP resource"
+  type        = list(string)
+  default     = ["1", "2", "3"]
 }
 
 variable "active_active_enabled" {

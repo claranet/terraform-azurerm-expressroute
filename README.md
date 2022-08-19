@@ -88,7 +88,7 @@ module "express_route" {
 
   service_provider_name = "Equinix"
   peering_location      = "London"
-  bandwidth_in_mbps     = "50"
+  bandwidth_in_mbps     = 50
 
   virtual_network_name = module.azure_virtual_network.virtual_network_name
   subnet_gateway_cidr  = ["10.10.0.0/27"]
@@ -144,6 +144,7 @@ module "express_route" {
 | custom\_diagnostic\_settings\_name | Custom name of the diagnostics settings, name will be 'default' if not set. | `string` | `"default"` | no |
 | custom\_express\_route\_circuit\_name | Custom ExpressRoute Circuit resource name | `string` | `null` | no |
 | custom\_express\_route\_gateway\_connection\_name | Custom ExpressRoute Gateway connection resource name | `string` | `null` | no |
+| custom\_express\_route\_ipconfig\_name | Custom ExpressRoute Gateway IP config name | `string` | `null` | no |
 | custom\_public\_ip\_name | Custom public IP resource name | `string` | `null` | no |
 | custom\_virtual\_network\_gateway\_name | Custom virtual network gateway resource name | `string` | `null` | no |
 | default\_tags\_enabled | Option to enable or disable default tags | `bool` | `true` | no |
@@ -167,8 +168,10 @@ module "express_route" {
 | name\_prefix | Optional prefix for the generated name | `string` | `""` | no |
 | name\_suffix | Optional suffix for the generated name | `string` | `""` | no |
 | peering\_location | The name of the peering location | `string` | n/a | yes |
+| public\_ip\_allocation\_method | Defines the allocation method for this IP address. Possible values are `Static` or `Dynamic`. | `string` | `"Dynamic"` | no |
 | public\_ip\_extra\_tags | Extra tags to add for public IP resource | `map(string)` | `{}` | no |
-| public\_ip\_sku | SKU of public IP resource | `string` | `"Standard"` | no |
+| public\_ip\_sku | SKU of public IP resource | `string` | `"Basic"` | no |
+| public\_ip\_zones | List of availability zone for the public IP resource | `list(string)` | <pre>[<br>  "1",<br>  "2",<br>  "3"<br>]</pre> | no |
 | resource\_group\_name | Name of the application's resource group. | `string` | n/a | yes |
 | service\_provider\_name | The name of the ExpressRoute Service Provide | `string` | n/a | yes |
 | stack | Name of application's stack. | `string` | n/a | yes |

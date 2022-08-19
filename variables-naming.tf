@@ -34,6 +34,12 @@ variable "custom_public_ip_name" {
   default     = null
 }
 
+variable "custom_express_route_ipconfig_name" {
+  description = "Custom ExpressRoute Gateway IP config name"
+  type        = string
+  default     = null
+}
+
 variable "custom_express_route_gateway_connection_name" {
   description = "Custom ExpressRoute Gateway connection resource name"
   type        = string
