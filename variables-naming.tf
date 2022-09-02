@@ -1,11 +1,11 @@
 variable "name_prefix" {
-  description = "Optional prefix for the generated name"
+  description = "Optional prefix for the generated name."
   type        = string
   default     = ""
 }
 
 variable "name_suffix" {
-  description = "Optional suffix for the generated name"
+  description = "Optional suffix for the generated name."
   type        = string
   default     = ""
 }
@@ -17,31 +17,31 @@ variable "use_caf_naming" {
 }
 
 variable "custom_express_route_circuit_name" {
-  description = "Custom ExpressRoute Circuit resource name"
+  description = "Custom ExpressRoute Circuit resource name."
   type        = string
   default     = null
 }
 
 variable "custom_express_route_gateway_name" {
-  description = "Custom ExpressRoute gateway resource name"
+  description = "Custom ExpressRoute gateway resource name."
   type        = string
   default     = null
 }
 
 variable "custom_public_ip_name" {
-  description = "Custom public IP resource name"
+  description = "Custom public IP resource name."
   type        = string
   default     = null
 }
 
 variable "custom_express_route_gateway_ipconfig_name" {
-  description = "Custom ExpressRoute Gateway IP config name"
+  description = "Custom ExpressRoute Gateway IP config name."
   type        = string
   default     = null
 }
 
 variable "custom_express_route_gateway_connection_name" {
-  description = "Custom ExpressRoute Gateway connection resource name"
+  description = "Custom ExpressRoute Gateway connection resource name."
   type        = string
   default     = null
 }

@@ -39,7 +39,7 @@ variable "peering_location" {
 }
 
 variable "bandwidth_in_mbps" {
-  description = "The bandwidth in Mbps of the circuit"
+  description = "The bandwidth in Mbps of the circuit."
   type        = number
 }
 
@@ -56,18 +56,18 @@ variable "express_route_sku" {
 }
 
 variable "virtual_network_name" {
-  description = "Virtual network name"
+  description = "Virtual network name."
   type        = string
 }
 
 variable "subnet_gateway_cidr" {
-  description = "The address prefix list to use for the subnet"
+  description = "The address prefix list to use for the subnet."
   type        = list(string)
   default     = null
 }
 
 variable "subnet_gateway_id" {
-  description = "ID of an existing subnet gateway"
+  description = "ID of an existing subnet gateway."
   type        = string
   default     = null
 }
@@ -85,13 +85,13 @@ variable "public_ip_allocation_method" {
 }
 
 variable "public_ip_zones" {
-  description = "List of availability zone for the public IP resource"
+  description = "List of availability zone for the public IP resource."
   type        = list(number)
   default     = [1, 2, 3]
 }
 
 variable "active_active_enabled" {
-  description = "Enable or disable an active-active Virtual Network Gateway (require a `HighPerformance` or an ` UltraPerformance` SKU)"
+  description = "Enable or disable an active-active Virtual Network Gateway. (Require a `HighPerformance` or an ` UltraPerformance` SKU.)"
   type        = bool
   default     = false
 }
@@ -103,7 +103,7 @@ variable "express_route_gateway_sku" {
 }
 
 variable "express_route_circuit_peerings" {
-  description = "Configuration block of Private, Public and Microsoft ExpressRoute Circuit Peerings"
+  description = "Configuration block of Private, Public and Microsoft ExpressRoute Circuit Peerings."
   type = list(object({
     peering_type                  = string
     primary_peer_address_prefix   = string
@@ -120,18 +120,18 @@ variable "express_route_circuit_peerings" {
 }
 
 variable "express_route_circuit_peering_enabled" {
-  description = "Enable or disable Express Route Circuit Peering configuration (Should be disable at start. When the ExpressRoute circuit status is 'Provisioned', enable it)"
+  description = "Enable or disable Express Route Circuit Peering configuration. (Should be disable at start. When the ExpressRoute circuit status is 'Provisioned', enable it.)"
   type        = bool
 }
 
 variable "express_route_gateway_enabled" {
-  description = "Enable or disable creation of the Virtual Network Gateway"
+  description = "Enable or disable creation of the Virtual Network Gateway."
   type        = bool
   default     = true
 }
 
 variable "express_route_gateway_connection_route_weight" {
-  description = "The routing weight of the ExpressRoute Gateway connection"
+  description = "The routing weight of the ExpressRoute Gateway connection."
   type        = number
   default     = 10
 }

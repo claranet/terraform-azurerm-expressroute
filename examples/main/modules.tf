@@ -71,8 +71,8 @@ module "express_route" {
   express_route_circuit_peerings = [
     {
       peering_type                  = "AzurePrivatePeering"
-      primary_peer_address_prefix   = "169.254.00.0/30"
-      secondary_peer_address_prefix = "169.254.00.4/30"
+      primary_peer_address_prefix   = "169.254.0.0/30"
+      secondary_peer_address_prefix = "169.254.0.4/30"
       peer_asn                      = 25419
       vlan_id                       = 100
     }
