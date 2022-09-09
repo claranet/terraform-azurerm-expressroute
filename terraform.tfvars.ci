@@ -1,0 +1,10 @@
+client_name="test"
+environment="dev"
+location="westeurope"
+location_short="euw"
+logs_destinations_ids=[]
+resource_group_name="test"
+stack="test"
+service_provider_name="Equinix"
+peering_location="Frankfurt"
+bandwidth_in_mbps="50"
