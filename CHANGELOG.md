@@ -1,3 +1,8 @@
+# Unreleased
+
+Changed
+  * AZ-844: Bump `subnet` module to latest version
+
 # v7.0.0 - 2022-09-30
 
 Breaking

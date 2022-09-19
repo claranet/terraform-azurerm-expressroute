@@ -113,14 +113,14 @@ module "express_route" {
 | Name | Version |
 |------|---------|
 | azurecaf | ~> 1.1 |
-| azurerm | ~> 3.0 |
+| azurerm | ~> 3.18 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
 | express\_route\_circuit\_diagnostic\_settings | claranet/diagnostic-settings/azurerm | 5.0.0 |
-| subnet\_gateway | claranet/subnet/azurerm | 5.0.0 |
+| subnet\_gateway | claranet/subnet/azurerm | 6.0.0 |
 
 ## Resources
 
