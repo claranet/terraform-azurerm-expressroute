@@ -113,7 +113,7 @@ module "express_route" {
 | Name | Version |
 |------|---------|
 | azurecaf | ~> 1.2, >= 1.2.22 |
-| azurerm | ~> 3.18 |
+| azurerm | ~> 3.22 |
 
 ## Modules
 
