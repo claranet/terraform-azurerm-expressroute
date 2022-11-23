@@ -1,4 +1,4 @@
-resource "azurecaf_name" "erc" {
+data "azurecaf_name" "erc" {
   name          = var.stack
   resource_type = "azurerm_express_route_circuit"
   prefixes      = var.name_prefix == "" ? null : [local.name_prefix]
@@ -8,7 +8,7 @@ resource "azurecaf_name" "erc" {
   separator     = "-"
 }
 
-resource "azurecaf_name" "ergw" {
+data "azurecaf_name" "ergw" {
   name          = var.stack
   resource_type = "azurerm_virtual_network_gateway"
   prefixes      = var.name_prefix == "" ? null : [local.name_prefix]
@@ -18,7 +18,7 @@ resource "azurecaf_name" "ergw" {
   separator     = "-"
 }
 
-resource "azurecaf_name" "pub_ip" {
+data "azurecaf_name" "pub_ip" {
   name          = var.stack
   resource_type = "azurerm_public_ip"
   prefixes      = var.name_prefix == "" ? null : [local.name_prefix]
@@ -28,7 +28,7 @@ resource "azurecaf_name" "pub_ip" {
   separator     = "-"
 }
 
-resource "azurecaf_name" "ergw_ipconfig" {
+data "azurecaf_name" "ergw_ipconfig" {
   name          = var.stack
   resource_type = "azurerm_public_ip"
   prefixes      = compact([var.use_caf_naming ? "ergwipconfig" : "", local.name_prefix])
@@ -38,7 +38,7 @@ resource "azurecaf_name" "ergw_ipconfig" {
   separator     = "-"
 }
 
-resource "azurecaf_name" "ergw_connection" {
+data "azurecaf_name" "ergw_connection" {
   name          = var.stack
   resource_type = "azurerm_vpn_gateway_connection"
   prefixes      = compact([var.use_caf_naming ? "ergwc" : "", local.name_prefix])
