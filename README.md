@@ -3,7 +3,7 @@
 [![Changelog](https://img.shields.io/badge/changelog-release-green.svg)](CHANGELOG.md) [![Notice](https://img.shields.io/badge/notice-copyright-yellow.svg)](NOTICE) [![Apache V2 License](https://img.shields.io/badge/license-Apache%20V2-orange.svg)](LICENSE) [![TF Registry](https://img.shields.io/badge/terraform-registry-blue.svg)](https://registry.terraform.io/modules/claranet/expressroute/azurerm/)
 
 This module creates an [Azure ExpressRoute Circuit](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/express_route_circuit).
-When your Azure ExpressRoute Circuit is provisionned, you can create an [Azure ExpressRoute Circuit Peering](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/express_route_circuit_peering). 
+When your Azure ExpressRoute Circuit is provisionned, you can create an [Azure ExpressRoute Circuit Peering](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/express_route_circuit_peering).
 If you configure a Private Peering Circuit, you can deploy an [Azure Virtual Network Gateway](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_network_gateway).
 
 <!-- BEGIN_TF_DOCS -->
@@ -18,6 +18,13 @@ If you configure a Private Peering Circuit, you can deploy an [Azure Virtual Net
 | >= 3.x.x       | 0.12.x            | >= 2.0          |
 | >= 2.x.x       | 0.12.x            | < 2.0           |
 | <  2.x.x       | 0.11.x            | < 2.0           |
+
+## Contributing
+
+If you want to contribute to this repository, feel free to use our [pre-commit](https://pre-commit.com/) git hook configuration
+which will help you automatically update and format some files for you by enforcing our Terraform code module best-practices.
+
+More details are available in the [CONTRIBUTING.md](./CONTRIBUTING.md#pull-request-process) file.
 
 ## Usage
 
