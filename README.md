@@ -127,7 +127,7 @@ module "express_route" {
 | Name | Source | Version |
 |------|--------|---------|
 | express\_route\_circuit\_diagnostic\_settings | claranet/diagnostic-settings/azurerm | ~> 6.5.0 |
-| subnet\_gateway | claranet/subnet/azurerm | 6.3.0 |
+| subnet\_gateway | claranet/subnet/azurerm | 7.0.0 |
 
 ## Resources
 
