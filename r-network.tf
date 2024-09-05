@@ -2,7 +2,7 @@ module "subnet_gateway" {
   source  = "claranet/subnet/azurerm"
   version = "7.0.0"
 
-  for_each = toset(var.express_route_gateway_enabled && var.subnet_gateway_cidr != null ? ["subnet_gateway"] : [])
+  count = var.express_route_gateway_enabled && var.subnet_gateway_cidr != null ? 1 : 0
 
   environment    = var.environment
   location_short = var.location_short
@@ -18,8 +18,13 @@ module "subnet_gateway" {
   subnet_cidr_list     = var.subnet_gateway_cidr
 }
 
+moved {
+  from = module.subnet_gateway["subnet_gateway"]
+  to   = module.subnet_gateway[0]
+}
+
 resource "azurerm_virtual_network_gateway" "ergw" {
-  for_each = toset(var.express_route_gateway_enabled ? ["ergw"] : [])
+  count = var.express_route_gateway_enabled ? 1 : 0
 
   name = local.vgw_name
 
@@ -31,21 +36,26 @@ resource "azurerm_virtual_network_gateway" "ergw" {
   sku           = var.express_route_gateway_sku
 
   dynamic "ip_configuration" {
-    for_each = local.public_ip_number
+    for_each = local.public_ip_number > 1 ? ["1", "2"] : ["1"]
 
     content {
-      name                 = format("%s%s", local.express_route_gateway_ipconfig_name, length(local.public_ip_number) > 1 ? "-0${ip_configuration.value}" : "")
-      public_ip_address_id = azurerm_public_ip.public_ip[ip_configuration.value].id
-      subnet_id            = var.subnet_gateway_cidr != null ? module.subnet_gateway["subnet_gateway"].subnet_id : var.subnet_gateway_id
+      name                 = format("%s%s", local.express_route_gateway_ipconfig_name, local.public_ip_number > 1 ? "-0${ip_configuration.value}" : "")
+      public_ip_address_id = azurerm_public_ip.public_ip[ip_configuration.value - 1].id
+      subnet_id            = var.subnet_gateway_cidr != null ? module.subnet_gateway[0].subnet_id : var.subnet_gateway_id
     }
   }
   tags = merge(local.default_tags, var.extra_tags, var.express_route_gateway_extra_tags)
+
+}
+moved {
+  from = azurerm_virtual_network_gateway.ergw["ergw"]
+  to   = azurerm_virtual_network_gateway.ergw[0]
 }
 
 resource "azurerm_public_ip" "public_ip" {
-  for_each = toset(var.express_route_gateway_enabled ? local.public_ip_number : [])
+  count = var.express_route_gateway_enabled ? local.public_ip_number : 0
 
-  name                = format("%s%s", local.pub_ip_name, length(local.public_ip_number) > 1 ? "-0${each.value}" : "")
+  name                = format("%s%s", local.pub_ip_name, local.public_ip_number > 1 ? "-0${count.index + 1}" : "")
   location            = var.location
   resource_group_name = var.resource_group_name
   allocation_method   = var.public_ip_allocation_method
@@ -56,7 +66,7 @@ resource "azurerm_public_ip" "public_ip" {
 }
 
 resource "azurerm_virtual_network_gateway_connection" "er_gateway_connection" {
-  for_each = toset(var.express_route_gateway_enabled && var.express_route_circuit_connected ? ["ergwc"] : [])
+  count = var.express_route_gateway_enabled && var.express_route_circuit_connected ? 1 : 0
 
   name = local.express_route_gateway_connection_name
 
@@ -64,9 +74,9 @@ resource "azurerm_virtual_network_gateway_connection" "er_gateway_connection" {
   resource_group_name = var.resource_group_name
 
   type                           = "ExpressRoute"
-  express_route_circuit_id       = var.express_route_circuit_enabled ? azurerm_express_route_circuit.erc["erc"].id : var.express_route_circuit_id
+  express_route_circuit_id       = var.express_route_circuit_enabled ? azurerm_express_route_circuit.erc[0].id : var.express_route_circuit_id
   authorization_key              = var.express_route_circuit_authorization_key
-  virtual_network_gateway_id     = azurerm_virtual_network_gateway.ergw["ergw"].id
+  virtual_network_gateway_id     = azurerm_virtual_network_gateway.ergw[0].id
   local_azure_ip_address_enabled = false
   routing_weight                 = var.express_route_gateway_connection_route_weight
 
@@ -77,4 +87,9 @@ resource "azurerm_virtual_network_gateway_connection" "er_gateway_connection" {
       error_message = "Either `express_route_circuit_enabled` or `express_route_circuit_id` must be set."
     }
   }
+}
+
+moved {
+  from = azurerm_virtual_network_gateway_connection.er_gateway_connection["ergwc"]
+  to   = azurerm_virtual_network_gateway_connection.er_gateway_connection[0]
 }
