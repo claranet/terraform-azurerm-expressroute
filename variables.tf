@@ -75,7 +75,7 @@ variable "subnet_gateway_id" {
 variable "public_ip_sku" {
   description = "SKU of public IP resource. Possible values are `Basic` or `Standard`."
   type        = string
-  default     = "Basic"
+  default     = "Standard"
 }
 
 variable "public_ip_allocation_method" {
