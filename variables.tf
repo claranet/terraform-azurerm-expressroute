@@ -159,3 +159,10 @@ variable "express_route_circuit_connected" {
   type        = bool
   default     = true
 }
+
+variable "express_route_circuit_authorization_key" {
+  description = "The authorization key to use for the ExpressRoute Circuit."
+  type        = string
+  sensitive   = true
+  default     = null
+}

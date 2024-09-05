@@ -65,6 +65,7 @@ resource "azurerm_virtual_network_gateway_connection" "er_gateway_connection" {
 
   type                           = "ExpressRoute"
   express_route_circuit_id       = var.express_route_circuit_enabled ? azurerm_express_route_circuit.erc["erc"].id : var.express_route_circuit_id
+  authorization_key              = var.express_route_circuit_authorization_key
   virtual_network_gateway_id     = azurerm_virtual_network_gateway.ergw["ergw"].id
   local_azure_ip_address_enabled = false
   routing_weight                 = var.express_route_gateway_connection_route_weight

@@ -159,6 +159,7 @@ module "express_route" {
 | custom\_public\_ip\_name | Custom public IP resource name. | `string` | `null` | no |
 | default\_tags\_enabled | Option to enable or disable default tags. | `bool` | `true` | no |
 | environment | Name of application's environment. | `string` | n/a | yes |
+| express\_route\_circuit\_authorization\_key | The authorization key to use for the ExpressRoute Circuit. | `string` | `null` | no |
 | express\_route\_circuit\_connected | Whether the ExpressRoute Circuit is connected or not. | `bool` | `true` | no |
 | express\_route\_circuit\_enabled | Whether to create the ExpressRoute Circuit or not. | `bool` | `true` | no |
 | express\_route\_circuit\_extra\_tags | Extra tags to add for ExpressRoute Circuit resource. | `map(string)` | `{}` | no |
