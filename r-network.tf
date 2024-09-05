@@ -9,7 +9,7 @@ module "subnet_gateway" {
   client_name    = var.client_name
   stack          = var.stack
 
-  resource_group_name = var.resource_group_name
+  resource_group_name = var.virtual_network_resource_group_name != null ? var.virtual_network_resource_group_name : var.resource_group_name
 
   custom_subnet_name = "GatewaySubnet"
   use_caf_naming     = false
@@ -56,7 +56,7 @@ resource "azurerm_public_ip" "public_ip" {
 }
 
 resource "azurerm_virtual_network_gateway_connection" "er_gateway_connection" {
-  for_each = toset(var.express_route_gateway_enabled ? ["ergwc"] : [])
+  for_each = toset(var.express_route_gateway_enabled && var.express_route_circuit_connected ? ["ergwc"] : [])
 
   name = local.express_route_gateway_connection_name
 
@@ -64,10 +64,16 @@ resource "azurerm_virtual_network_gateway_connection" "er_gateway_connection" {
   resource_group_name = var.resource_group_name
 
   type                           = "ExpressRoute"
-  express_route_circuit_id       = azurerm_express_route_circuit.erc.id
+  express_route_circuit_id       = var.express_route_circuit_enabled ? azurerm_express_route_circuit.erc["erc"].id : var.express_route_circuit_id
   virtual_network_gateway_id     = azurerm_virtual_network_gateway.ergw["ergw"].id
   local_azure_ip_address_enabled = false
   routing_weight                 = var.express_route_gateway_connection_route_weight
 
   tags = merge(local.default_tags, var.extra_tags, var.express_route_gateway_connection_extra_tags)
+  lifecycle {
+    precondition {
+      condition     = (var.express_route_circuit_enabled && var.express_route_circuit_id == null) || (!var.express_route_circuit_enabled && var.express_route_circuit_id != null)
+      error_message = "Either `express_route_circuit_enabled` or `express_route_circuit_id` must be set."
+    }
+  }
 }

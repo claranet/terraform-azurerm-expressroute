@@ -1,21 +1,21 @@
 output "express_route_circuit_id" {
   description = "The ID of the ExpressRoute circuit"
-  value       = azurerm_express_route_circuit.erc.id
+  value       = try(azurerm_express_route_circuit.erc["erc"].id, null)
 }
 
 output "express_route_circuit_name" {
   description = "Name of the ExpressRoute circuit"
-  value       = azurerm_express_route_circuit.erc.name
+  value       = try(azurerm_express_route_circuit.erc["erc"].name, null)
 }
 
 output "express_route_circuit_service_provider_provisioning_state" {
   description = "The ExpressRoute circuit provisioning state from your chosen service provider"
-  value       = azurerm_express_route_circuit.erc.service_provider_provisioning_state
+  value       = try(azurerm_express_route_circuit.erc["erc"].service_provider_provisioning_state, null)
 }
 
 output "express_route_circuit_service_key" {
   description = "The string needed by the service provider to provision the ExpressRoute circuit"
-  value       = azurerm_express_route_circuit.erc.service_key
+  value       = try(azurerm_express_route_circuit.erc["erc"].service_key, null)
   sensitive   = true
 }
 

@@ -135,3 +135,27 @@ variable "express_route_gateway_connection_route_weight" {
   type        = number
   default     = 10
 }
+
+variable "express_route_circuit_enabled" {
+  description = "Whether to create the ExpressRoute Circuit or not."
+  type        = bool
+  default     = true
+}
+
+variable "express_route_circuit_id" {
+  description = "ExpressRoute Circuit ID if not managed by this module."
+  type        = string
+  default     = null
+}
+
+variable "virtual_network_resource_group_name" {
+  description = "Name of the virtual network's resource group if not the same as the Gateway's one."
+  type        = string
+  default     = null
+}
+
+variable "express_route_circuit_connected" {
+  description = "Whether the ExpressRoute Circuit is connected or not."
+  type        = bool
+  default     = true
+}

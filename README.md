@@ -159,7 +159,10 @@ module "express_route" {
 | custom\_public\_ip\_name | Custom public IP resource name. | `string` | `null` | no |
 | default\_tags\_enabled | Option to enable or disable default tags. | `bool` | `true` | no |
 | environment | Name of application's environment. | `string` | n/a | yes |
+| express\_route\_circuit\_connected | Whether the ExpressRoute Circuit is connected or not. | `bool` | `true` | no |
+| express\_route\_circuit\_enabled | Whether to create the ExpressRoute Circuit or not. | `bool` | `true` | no |
 | express\_route\_circuit\_extra\_tags | Extra tags to add for ExpressRoute Circuit resource. | `map(string)` | `{}` | no |
+| express\_route\_circuit\_id | ExpressRoute Circuit ID if not managed by this module. | `string` | `null` | no |
 | express\_route\_circuit\_peering\_enabled | Enable or disable Express Route Circuit Peering configuration. (Should be disable at start. When the ExpressRoute circuit status is 'Provisioned', enable it.) | `bool` | n/a | yes |
 | express\_route\_circuit\_peerings | Configuration block of Private, Public and Microsoft ExpressRoute Circuit Peerings. | <pre>list(object({<br>    peering_type                  = string<br>    primary_peer_address_prefix   = string<br>    secondary_peer_address_prefix = string<br>    peer_asn                      = number<br>    vlan_id                       = number<br>    shared_key                    = optional(string)<br>    microsoft_peering_config = optional(object({<br>      advertised_public_prefixes = list(string)<br>      customer_asn               = optional(number)<br>      routing_registry_name      = optional(string)<br>    }))<br>  }))</pre> | n/a | yes |
 | express\_route\_gateway\_connection\_extra\_tags | Extra tags to add for ExpressRoute Gateway connection resource. | `map(string)` | `{}` | no |
@@ -188,6 +191,7 @@ module "express_route" {
 | subnet\_gateway\_id | ID of an existing subnet gateway. | `string` | `null` | no |
 | use\_caf\_naming | Use the Azure CAF naming provider to generate default resource name. `custom_name` override this if set. Legacy default name is used if this is set to `false`. | `bool` | `true` | no |
 | virtual\_network\_name | Virtual network name. | `string` | n/a | yes |
+| virtual\_network\_resource\_group\_name | Name of the virtual network's resource group if not the same as the Gateway's one. | `string` | `null` | no |
 
 ## Outputs
 

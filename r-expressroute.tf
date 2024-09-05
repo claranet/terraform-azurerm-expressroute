@@ -1,5 +1,6 @@
 resource "azurerm_express_route_circuit" "erc" {
-  name = local.erc_name
+  for_each = toset(var.express_route_circuit_enabled ? ["erc"] : [])
+  name     = local.erc_name
 
   resource_group_name = var.resource_group_name
   location            = var.location
@@ -19,7 +20,7 @@ resource "azurerm_express_route_circuit" "erc" {
 resource "azurerm_express_route_circuit_peering" "ercp" {
   for_each = var.express_route_circuit_peering_enabled ? { for peering in var.express_route_circuit_peerings : peering.peering_type => peering } : {}
 
-  express_route_circuit_name = azurerm_express_route_circuit.erc.name
+  express_route_circuit_name = azurerm_express_route_circuit.erc["erc"].name
   resource_group_name        = var.resource_group_name
 
   peering_type                  = each.value.peering_type
