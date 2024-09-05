@@ -181,7 +181,7 @@ module "express_route" {
 | name\_prefix | Optional prefix for the generated name. | `string` | `""` | no |
 | name\_suffix | Optional suffix for the generated name. | `string` | `""` | no |
 | peering\_location | The name of the peering [location](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-locations#locations). | `string` | n/a | yes |
-| public\_ip\_allocation\_method | Defines the allocation method for this IP address. Possible values are `Static` or `Dynamic`. | `string` | `"Dynamic"` | no |
+| public\_ip\_allocation\_method | Defines the allocation method for this IP address. Possible values are `Static` or `Dynamic`. | `string` | `"Static"` | no |
 | public\_ip\_extra\_tags | Extra tags to add for public IP resource. | `map(string)` | `{}` | no |
 | public\_ip\_sku | SKU of public IP resource. Possible values are `Basic` or `Standard`. | `string` | `"Standard"` | no |
 | public\_ip\_zones | List of availability zone for the public IP resource. | `list(number)` | <pre>[<br>  1,<br>  2,<br>  3<br>]</pre> | no |
@@ -192,7 +192,6 @@ module "express_route" {
 | subnet\_gateway\_id | ID of an existing subnet gateway. | `string` | `null` | no |
 | use\_caf\_naming | Use the Azure CAF naming provider to generate default resource name. `custom_name` override this if set. Legacy default name is used if this is set to `false`. | `bool` | `true` | no |
 | virtual\_network\_name | Virtual network name. | `string` | n/a | yes |
-| virtual\_network\_resource\_group\_name | Name of the virtual network's resource group if not the same as the Gateway's one. | `string` | `null` | no |
 
 ## Outputs
 

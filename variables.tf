@@ -81,7 +81,7 @@ variable "public_ip_sku" {
 variable "public_ip_allocation_method" {
   description = "Defines the allocation method for this IP address. Possible values are `Static` or `Dynamic`."
   type        = string
-  default     = "Dynamic"
+  default     = "Static"
 }
 
 variable "public_ip_zones" {
@@ -144,12 +144,6 @@ variable "express_route_circuit_enabled" {
 
 variable "express_route_circuit_id" {
   description = "ExpressRoute Circuit ID if not managed by this module."
-  type        = string
-  default     = null
-}
-
-variable "virtual_network_resource_group_name" {
-  description = "Name of the virtual network's resource group if not the same as the Gateway's one."
   type        = string
   default     = null
 }

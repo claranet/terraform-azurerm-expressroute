@@ -9,7 +9,7 @@ module "subnet_gateway" {
   client_name    = var.client_name
   stack          = var.stack
 
-  resource_group_name = var.virtual_network_resource_group_name != null ? var.virtual_network_resource_group_name : var.resource_group_name
+  resource_group_name = var.resource_group_name
 
   custom_subnet_name = "GatewaySubnet"
   use_caf_naming     = false
