@@ -75,13 +75,13 @@ variable "subnet_gateway_id" {
 variable "public_ip_sku" {
   description = "SKU of public IP resource. Possible values are `Basic` or `Standard`."
   type        = string
-  default     = "Basic"
+  default     = "Standard"
 }
 
 variable "public_ip_allocation_method" {
   description = "Defines the allocation method for this IP address. Possible values are `Static` or `Dynamic`."
   type        = string
-  default     = "Dynamic"
+  default     = "Static"
 }
 
 variable "public_ip_zones" {
@@ -134,4 +134,29 @@ variable "express_route_gateway_connection_route_weight" {
   description = "The routing weight of the ExpressRoute Gateway connection."
   type        = number
   default     = 10
+}
+
+variable "express_route_circuit_enabled" {
+  description = "Whether to create the ExpressRoute Circuit or not."
+  type        = bool
+  default     = true
+}
+
+variable "express_route_circuit_id" {
+  description = "ExpressRoute Circuit ID if not managed by this module."
+  type        = string
+  default     = null
+}
+
+variable "express_route_circuit_connected" {
+  description = "Whether the ExpressRoute Circuit is connected or not."
+  type        = bool
+  default     = true
+}
+
+variable "express_route_circuit_authorization_key" {
+  description = "The authorization key to use for the ExpressRoute Circuit."
+  type        = string
+  sensitive   = true
+  default     = null
 }

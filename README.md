@@ -159,7 +159,11 @@ module "express_route" {
 | custom\_public\_ip\_name | Custom public IP resource name. | `string` | `null` | no |
 | default\_tags\_enabled | Option to enable or disable default tags. | `bool` | `true` | no |
 | environment | Name of application's environment. | `string` | n/a | yes |
+| express\_route\_circuit\_authorization\_key | The authorization key to use for the ExpressRoute Circuit. | `string` | `null` | no |
+| express\_route\_circuit\_connected | Whether the ExpressRoute Circuit is connected or not. | `bool` | `true` | no |
+| express\_route\_circuit\_enabled | Whether to create the ExpressRoute Circuit or not. | `bool` | `true` | no |
 | express\_route\_circuit\_extra\_tags | Extra tags to add for ExpressRoute Circuit resource. | `map(string)` | `{}` | no |
+| express\_route\_circuit\_id | ExpressRoute Circuit ID if not managed by this module. | `string` | `null` | no |
 | express\_route\_circuit\_peering\_enabled | Enable or disable Express Route Circuit Peering configuration. (Should be disable at start. When the ExpressRoute circuit status is 'Provisioned', enable it.) | `bool` | n/a | yes |
 | express\_route\_circuit\_peerings | Configuration block of Private, Public and Microsoft ExpressRoute Circuit Peerings. | <pre>list(object({<br>    peering_type                  = string<br>    primary_peer_address_prefix   = string<br>    secondary_peer_address_prefix = string<br>    peer_asn                      = number<br>    vlan_id                       = number<br>    shared_key                    = optional(string)<br>    microsoft_peering_config = optional(object({<br>      advertised_public_prefixes = list(string)<br>      customer_asn               = optional(number)<br>      routing_registry_name      = optional(string)<br>    }))<br>  }))</pre> | n/a | yes |
 | express\_route\_gateway\_connection\_extra\_tags | Extra tags to add for ExpressRoute Gateway connection resource. | `map(string)` | `{}` | no |
@@ -177,9 +181,9 @@ module "express_route" {
 | name\_prefix | Optional prefix for the generated name. | `string` | `""` | no |
 | name\_suffix | Optional suffix for the generated name. | `string` | `""` | no |
 | peering\_location | The name of the peering [location](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-locations#locations). | `string` | n/a | yes |
-| public\_ip\_allocation\_method | Defines the allocation method for this IP address. Possible values are `Static` or `Dynamic`. | `string` | `"Dynamic"` | no |
+| public\_ip\_allocation\_method | Defines the allocation method for this IP address. Possible values are `Static` or `Dynamic`. | `string` | `"Static"` | no |
 | public\_ip\_extra\_tags | Extra tags to add for public IP resource. | `map(string)` | `{}` | no |
-| public\_ip\_sku | SKU of public IP resource. Possible values are `Basic` or `Standard`. | `string` | `"Basic"` | no |
+| public\_ip\_sku | SKU of public IP resource. Possible values are `Basic` or `Standard`. | `string` | `"Standard"` | no |
 | public\_ip\_zones | List of availability zone for the public IP resource. | `list(number)` | <pre>[<br>  1,<br>  2,<br>  3<br>]</pre> | no |
 | resource\_group\_name | Name of the application's resource group. | `string` | n/a | yes |
 | service\_provider\_name | The name of the ExpressRoute [Service Provider](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-locations-providers#partners). | `string` | n/a | yes |
@@ -199,7 +203,7 @@ module "express_route" {
 | express\_route\_circuit\_service\_provider\_provisioning\_state | The ExpressRoute circuit provisioning state from your chosen service provider |
 | express\_route\_gateway\_id | ID of the ExpressRoute Gateway |
 | express\_route\_peering\_azure\_asn | ASN (Autonomous System Number) Used by Azure for BGP Peering |
-| subnet\_gateway\_id | ID of the Gateway Subnet ID |
+| subnet\_gateway\_id | ID of the Gateway Subnet |
 <!-- END_TF_DOCS -->
 ## Related documentation
 

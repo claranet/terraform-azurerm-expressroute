@@ -1,5 +1,6 @@
 resource "azurerm_express_route_circuit" "erc" {
-  name = local.erc_name
+  count = var.express_route_circuit_enabled ? 1 : 0
+  name  = local.erc_name
 
   resource_group_name = var.resource_group_name
   location            = var.location
@@ -16,10 +17,15 @@ resource "azurerm_express_route_circuit" "erc" {
   tags = merge(local.default_tags, var.extra_tags, var.express_route_circuit_extra_tags)
 }
 
+moved {
+  from = azurerm_express_route_circuit.erc
+  to   = azurerm_express_route_circuit.erc[0]
+}
+
 resource "azurerm_express_route_circuit_peering" "ercp" {
   for_each = var.express_route_circuit_peering_enabled ? { for peering in var.express_route_circuit_peerings : peering.peering_type => peering } : {}
 
-  express_route_circuit_name = azurerm_express_route_circuit.erc.name
+  express_route_circuit_name = one(azurerm_express_route_circuit.erc[*].name)
   resource_group_name        = var.resource_group_name
 
   peering_type                  = each.value.peering_type
