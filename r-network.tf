@@ -36,7 +36,7 @@ resource "azurerm_virtual_network_gateway" "ergw" {
   sku           = var.express_route_gateway_sku
 
   dynamic "ip_configuration" {
-    for_each = range(1, local.public_ip_number +1)
+    for_each = range(1, local.public_ip_number + 1)
 
     content {
       name                 = format("%s%s", local.express_route_gateway_ipconfig_name, local.public_ip_number > 1 ? "-0${ip_configuration.value}" : "")
