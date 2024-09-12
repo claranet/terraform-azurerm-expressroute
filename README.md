@@ -120,7 +120,7 @@ module "express_route" {
 | Name | Version |
 |------|---------|
 | azurecaf | ~> 1.2, >= 1.2.22 |
-| azurerm | ~> 3.39 |
+| azurerm | ~> 3.84 |
 
 ## Modules
 
@@ -170,7 +170,9 @@ module "express_route" {
 | express\_route\_gateway\_connection\_route\_weight | The routing weight of the ExpressRoute Gateway connection. | `number` | `10` | no |
 | express\_route\_gateway\_enabled | Enable or disable creation of the Virtual Network Gateway. | `bool` | `true` | no |
 | express\_route\_gateway\_extra\_tags | Extra tags to add for Virtual Network Gateway resource. | `map(string)` | `{}` | no |
+| express\_route\_gateway\_remote\_vnet\_traffic\_enabled | Whether to allow remote VNet traffic to flow through the ExpressRoute Gateway. | `bool` | `false` | no |
 | express\_route\_gateway\_sku | SKU of the virtual network gateway resource. Possible values are [here](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-about-virtual-network-gateways#gwsku). | `string` | `"Standard"` | no |
+| express\_route\_gateway\_virtual\_wan\_traffic\_enabled | Whether to allow Virtual WAN traffic to flow through the ExpressRoute Gateway. | `bool` | `false` | no |
 | express\_route\_sku | ExpressRoute SKU. Possible values are [here](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/express_route_circuit#sku). | <pre>object({<br>    tier   = string,<br>    family = string<br>  })</pre> | <pre>{<br>  "family": "MeteredData",<br>  "tier": "Standard"<br>}</pre> | no |
 | extra\_tags | Extra tags to add. | `map(string)` | `{}` | no |
 | location | Azure location. | `string` | n/a | yes |

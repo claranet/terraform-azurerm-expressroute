@@ -35,6 +35,9 @@ resource "azurerm_virtual_network_gateway" "ergw" {
   active_active = var.express_route_gateway_sku != "Standard" ? var.active_active_enabled : false
   sku           = var.express_route_gateway_sku
 
+  remote_vnet_traffic_enabled = var.express_route_gateway_remote_vnet_traffic_enabled
+  virtual_wan_traffic_enabled = var.express_route_gateway_virtual_wan_traffic_enabled
+
   dynamic "ip_configuration" {
     for_each = range(1, local.public_ip_number + 1)
 

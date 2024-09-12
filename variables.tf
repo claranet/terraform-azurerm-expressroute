@@ -160,3 +160,15 @@ variable "express_route_circuit_authorization_key" {
   sensitive   = true
   default     = null
 }
+
+variable "express_route_gateway_remote_vnet_traffic_enabled" {
+  description = "Whether to allow remote VNet traffic to flow through the ExpressRoute Gateway."
+  type        = bool
+  default     = false
+}
+
+variable "express_route_gateway_virtual_wan_traffic_enabled" {
+  description = "Whether to allow Virtual WAN traffic to flow through the ExpressRoute Gateway."
+  type        = bool
+  default     = false
+}
