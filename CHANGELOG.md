@@ -1,3 +1,17 @@
+## 7.3.0 (2024-09-13)
+
+### Features
+
+* **AZ-1455:** add support of remote vnet traffic and vwan traffic 078b4e8
+
+### Miscellaneous Chores
+
+* **deps:** update dependency trivy to v0.55.1 6977e07
+* **deps:** update pre-commit hook alessandrojcm/commitlint-pre-commit-hook to v9.18.0 5931f46
+* **deps:** update pre-commit hook antonbabenko/pre-commit-terraform to v1.94.2 2d211fc
+* **deps:** update pre-commit hook antonbabenko/pre-commit-terraform to v1.94.3 a9a196c
+* **deps:** update pre-commit hook antonbabenko/pre-commit-terraform to v1.95.0 4f4703f
+
 ## 7.2.0 (2024-09-06)
 
 ### Features
