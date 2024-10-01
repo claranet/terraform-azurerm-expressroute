@@ -1,6 +1,6 @@
 module "subnet_gateway" {
   source  = "claranet/subnet/azurerm"
-  version = "7.0.0"
+  version = "7.1.0"
 
   count = var.express_route_gateway_enabled && var.subnet_gateway_cidr != null ? 1 : 0
 
