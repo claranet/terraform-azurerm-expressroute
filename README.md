@@ -120,7 +120,7 @@ module "express_route" {
 | Name | Version |
 |------|---------|
 | azurecaf | ~> 1.2, >= 1.2.22 |
-| azurerm | ~> 3.84 |
+| azurerm | ~> 3.107 |
 
 ## Modules
 
@@ -165,7 +165,7 @@ module "express_route" {
 | express\_route\_circuit\_extra\_tags | Extra tags to add for ExpressRoute Circuit resource. | `map(string)` | `{}` | no |
 | express\_route\_circuit\_id | ExpressRoute Circuit ID if not managed by this module. | `string` | `null` | no |
 | express\_route\_circuit\_peering\_enabled | Enable or disable Express Route Circuit Peering configuration. (Should be disable at start. When the ExpressRoute circuit status is 'Provisioned', enable it.) | `bool` | n/a | yes |
-| express\_route\_circuit\_peerings | Configuration block of Private, Public and Microsoft ExpressRoute Circuit Peerings. | <pre>list(object({<br>    peering_type                  = string<br>    primary_peer_address_prefix   = string<br>    secondary_peer_address_prefix = string<br>    peer_asn                      = number<br>    vlan_id                       = number<br>    shared_key                    = optional(string)<br>    microsoft_peering_config = optional(object({<br>      advertised_public_prefixes = list(string)<br>      customer_asn               = optional(number)<br>      routing_registry_name      = optional(string)<br>    }))<br>  }))</pre> | n/a | yes |
+| express\_route\_circuit\_peerings | Configuration block of Private, Public and Microsoft ExpressRoute Circuit Peerings. | <pre>list(object({<br/>    peering_type                  = string<br/>    primary_peer_address_prefix   = string<br/>    secondary_peer_address_prefix = string<br/>    peer_asn                      = number<br/>    vlan_id                       = number<br/>    shared_key                    = optional(string)<br/>    microsoft_peering_config = optional(object({<br/>      advertised_public_prefixes = list(string)<br/>      customer_asn               = optional(number)<br/>      routing_registry_name      = optional(string)<br/>    }))<br/>  }))</pre> | n/a | yes |
 | express\_route\_gateway\_connection\_extra\_tags | Extra tags to add for ExpressRoute Gateway connection resource. | `map(string)` | `{}` | no |
 | express\_route\_gateway\_connection\_route\_weight | The routing weight of the ExpressRoute Gateway connection. | `number` | `10` | no |
 | express\_route\_gateway\_enabled | Enable or disable creation of the Virtual Network Gateway. | `bool` | `true` | no |
@@ -173,12 +173,12 @@ module "express_route" {
 | express\_route\_gateway\_remote\_vnet\_traffic\_enabled | Whether to allow remote VNet traffic to flow through the ExpressRoute Gateway. | `bool` | `false` | no |
 | express\_route\_gateway\_sku | SKU of the virtual network gateway resource. Possible values are [here](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-about-virtual-network-gateways#gwsku). | `string` | `"Standard"` | no |
 | express\_route\_gateway\_virtual\_wan\_traffic\_enabled | Whether to allow Virtual WAN traffic to flow through the ExpressRoute Gateway. | `bool` | `false` | no |
-| express\_route\_sku | ExpressRoute SKU. Possible values are [here](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/express_route_circuit#sku). | <pre>object({<br>    tier   = string,<br>    family = string<br>  })</pre> | <pre>{<br>  "family": "MeteredData",<br>  "tier": "Standard"<br>}</pre> | no |
+| express\_route\_sku | ExpressRoute SKU. Possible values are [here](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/express_route_circuit#sku). | <pre>object({<br/>    tier   = string,<br/>    family = string<br/>  })</pre> | <pre>{<br/>  "family": "MeteredData",<br/>  "tier": "Standard"<br/>}</pre> | no |
 | extra\_tags | Extra tags to add. | `map(string)` | `{}` | no |
 | location | Azure location. | `string` | n/a | yes |
 | location\_short | Short string for Azure location. | `string` | n/a | yes |
 | logs\_categories | Log categories to send to destinations. | `list(string)` | `null` | no |
-| logs\_destinations\_ids | List of destination resources IDs for logs diagnostic destination.<br>Can be `Storage Account`, `Log Analytics Workspace` and `Event Hub`. No more than one of each can be set.<br>If you want to specify an Azure EventHub to send logs and metrics to, you need to provide a formated string with both the EventHub Namespace authorization send ID and the EventHub name (name of the queue to use in the Namespace) separated by the `|` character. | `list(string)` | n/a | yes |
+| logs\_destinations\_ids | List of destination resources IDs for logs diagnostic destination.<br/>Can be `Storage Account`, `Log Analytics Workspace` and `Event Hub`. No more than one of each can be set.<br/>If you want to specify an Azure EventHub to send logs and metrics to, you need to provide a formated string with both the EventHub Namespace authorization send ID and the EventHub name (name of the queue to use in the Namespace) separated by the `|` character. | `list(string)` | n/a | yes |
 | logs\_metrics\_categories | Metrics categories to send to destinations. | `list(string)` | `null` | no |
 | name\_prefix | Optional prefix for the generated name. | `string` | `""` | no |
 | name\_suffix | Optional suffix for the generated name. | `string` | `""` | no |
@@ -186,7 +186,7 @@ module "express_route" {
 | public\_ip\_allocation\_method | Defines the allocation method for this IP address. Possible values are `Static` or `Dynamic`. | `string` | `"Static"` | no |
 | public\_ip\_extra\_tags | Extra tags to add for public IP resource. | `map(string)` | `{}` | no |
 | public\_ip\_sku | SKU of public IP resource. Possible values are `Basic` or `Standard`. | `string` | `"Standard"` | no |
-| public\_ip\_zones | List of availability zone for the public IP resource. | `list(number)` | <pre>[<br>  1,<br>  2,<br>  3<br>]</pre> | no |
+| public\_ip\_zones | List of availability zone for the public IP resource. | `list(number)` | <pre>[<br/>  1,<br/>  2,<br/>  3<br/>]</pre> | no |
 | resource\_group\_name | Name of the application's resource group. | `string` | n/a | yes |
 | service\_provider\_name | The name of the ExpressRoute [Service Provider](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-locations-providers#partners). | `string` | n/a | yes |
 | stack | Name of application's stack. | `string` | n/a | yes |
