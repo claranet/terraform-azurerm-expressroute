@@ -1,3 +1,17 @@
+## 7.3.1 (2024-10-01)
+
+### Documentation
+
+* update README badge to use OpenTofu registry 328e417
+
+### Miscellaneous Chores
+
+* bump minimum AzureRM version e472a42
+* **deps:** update dependency claranet/subnet/azurerm to v7.1.0 a31998d
+* **deps:** update dependency trivy to v0.55.2 cd2f39e
+* **deps:** update pre-commit hook antonbabenko/pre-commit-terraform to v1.96.0 5976dd8
+* **deps:** update tools 3718aff
+
 ## 7.3.0 (2024-09-13)
 
 ### Features
