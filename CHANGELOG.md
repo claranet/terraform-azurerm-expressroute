@@ -1,3 +1,9 @@
+## 7.4.0 (2024-10-03)
+
+### Features
+
+* use Claranet "azurecaf" provider 00b8db3
+
 ## 7.3.1 (2024-10-01)
 
 ### Documentation
