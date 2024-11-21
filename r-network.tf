@@ -18,7 +18,6 @@ module "subnet_gateway" {
   subnet_cidr_list     = var.subnet_gateway_cidr
 
   default_outbound_access_enabled = var.subnet_gateway_default_outbound_access_enabled
-
 }
 
 moved {
