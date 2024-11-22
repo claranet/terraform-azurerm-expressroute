@@ -195,6 +195,7 @@ module "express_route" {
 | service\_provider\_name | The name of the ExpressRoute [Service Provider](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-locations-providers#partners). | `string` | n/a | yes |
 | stack | Name of application's stack. | `string` | n/a | yes |
 | subnet\_gateway\_cidr | The address prefix list to use for the subnet. | `list(string)` | `null` | no |
+| subnet\_gateway\_default\_outbound\_access\_enabled | Whether to allow default outbound traffic from the subnet. | `bool` | `false` | no |
 | subnet\_gateway\_id | ID of an existing subnet gateway. | `string` | `null` | no |
 | use\_caf\_naming | Use the Azure CAF naming provider to generate default resource name. `custom_name` override this if set. Legacy default name is used if this is set to `false`. | `bool` | `true` | no |
 | virtual\_network\_name | Virtual network name. | `string` | n/a | yes |

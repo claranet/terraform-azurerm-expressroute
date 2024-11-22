@@ -66,6 +66,12 @@ variable "subnet_gateway_cidr" {
   default     = null
 }
 
+variable "subnet_gateway_default_outbound_access_enabled" {
+  description = "Whether to allow default outbound traffic from the subnet."
+  type        = bool
+  default     = false
+}
+
 variable "subnet_gateway_id" {
   description = "ID of an existing subnet gateway."
   type        = string
