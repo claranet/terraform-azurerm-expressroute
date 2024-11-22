@@ -1,6 +1,6 @@
-resource "azurerm_express_route_circuit" "erc" {
-  count = var.express_route_circuit_enabled ? 1 : 0
-  name  = local.erc_name
+resource "azurerm_express_route_circuit" "main" {
+  count = var.circuit_enabled ? 1 : 0
+  name  = local.circuit_name
 
   resource_group_name = var.resource_group_name
   location            = var.location
@@ -14,18 +14,18 @@ resource "azurerm_express_route_circuit" "erc" {
     family = var.express_route_sku.family
   }
 
-  tags = merge(local.default_tags, var.extra_tags, var.express_route_circuit_extra_tags)
+  tags = merge(local.default_tags, var.extra_tags, var.circuit_extra_tags)
 }
 
 moved {
-  from = azurerm_express_route_circuit.erc
-  to   = azurerm_express_route_circuit.erc[0]
+  from = azurerm_express_route_circuit.erc[0]
+  to   = azurerm_express_route_circuit.main[0]
 }
 
-resource "azurerm_express_route_circuit_peering" "ercp" {
-  for_each = var.express_route_circuit_peering_enabled ? { for peering in var.express_route_circuit_peerings : peering.peering_type => peering } : {}
+resource "azurerm_express_route_circuit_peering" "main" {
+  for_each = var.circuit_peering_enabled ? { for peering in var.circuit_peerings : peering.peering_type => peering } : {}
 
-  express_route_circuit_name = one(azurerm_express_route_circuit.erc[*].name)
+  express_route_circuit_name = one(azurerm_express_route_circuit.main[*].name)
   resource_group_name        = var.resource_group_name
 
   peering_type                  = each.value.peering_type
@@ -46,4 +46,9 @@ resource "azurerm_express_route_circuit_peering" "ercp" {
       routing_registry_name      = lookup(microsoft_peering_config.value, "routing_registry_name", null)
     }
   }
+}
+
+moved {
+  from = azurerm_express_route_circuit_peering.ercp
+  to   = azurerm_express_route_circuit_peering.main
 }

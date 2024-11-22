@@ -10,38 +10,32 @@ variable "name_suffix" {
   default     = ""
 }
 
-variable "use_caf_naming" {
-  description = "Use the Azure CAF naming provider to generate default resource name. `custom_name` override this if set. Legacy default name is used if this is set to `false`."
-  type        = bool
-  default     = true
-}
-
-variable "custom_express_route_circuit_name" {
+variable "circuit_custom_name" {
   description = "Custom ExpressRoute Circuit resource name."
   type        = string
   default     = null
 }
 
-variable "custom_express_route_gateway_name" {
-  description = "Custom ExpressRoute gateway resource name."
+variable "gateway_custom_name" {
+  description = "Custom ExpressRoute Gateway resource name."
   type        = string
   default     = null
 }
 
-variable "custom_public_ip_name" {
+variable "public_ip_custom_name" {
   description = "Custom public IP resource name."
   type        = string
   default     = null
 }
 
-variable "custom_express_route_gateway_ipconfig_name" {
+variable "gateway_ipconfig_custom_name" {
   description = "Custom ExpressRoute Gateway IP config name."
   type        = string
   default     = null
 }
 
-variable "custom_express_route_gateway_connection_name" {
-  description = "Custom ExpressRoute Gateway connection resource name."
+variable "connection_custom_name" {
+  description = "Custom ExpressRoute Gateway Connection resource name."
   type        = string
   default     = null
 }

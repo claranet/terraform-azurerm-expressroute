@@ -10,13 +10,13 @@ variable "extra_tags" {
   default     = {}
 }
 
-variable "express_route_circuit_extra_tags" {
+variable "circuit_extra_tags" {
   description = "Extra tags to add for ExpressRoute Circuit resource."
   type        = map(string)
   default     = {}
 }
 
-variable "express_route_gateway_extra_tags" {
+variable "gateway_extra_tags" {
   description = "Extra tags to add for Virtual Network Gateway resource."
   type        = map(string)
   default     = {}
@@ -28,8 +28,8 @@ variable "public_ip_extra_tags" {
   default     = {}
 }
 
-variable "express_route_gateway_connection_extra_tags" {
-  description = "Extra tags to add for ExpressRoute Gateway connection resource."
+variable "connection_extra_tags" {
+  description = "Extra tags to add for ExpressRoute Gateway Connection resource."
   type        = map(string)
   default     = {}
 }

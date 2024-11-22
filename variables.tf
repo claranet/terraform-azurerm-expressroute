@@ -39,7 +39,7 @@ variable "peering_location" {
 }
 
 variable "bandwidth_in_mbps" {
-  description = "The bandwidth in Mbps of the circuit."
+  description = "The Circuit bandwidth in Mbps."
   type        = number
 }
 
@@ -60,19 +60,19 @@ variable "virtual_network_name" {
   type        = string
 }
 
-variable "subnet_gateway_cidr" {
+variable "subnet_cidr" {
   description = "The address prefix list to use for the subnet."
   type        = list(string)
   default     = null
 }
 
-variable "subnet_gateway_default_outbound_access_enabled" {
+variable "subnet_default_outbound_access_enabled" {
   description = "Whether to allow default outbound traffic from the subnet."
   type        = bool
   default     = false
 }
 
-variable "subnet_gateway_id" {
+variable "subnet_id" {
   description = "ID of an existing subnet gateway."
   type        = string
   default     = null
@@ -102,13 +102,13 @@ variable "active_active_enabled" {
   default     = false
 }
 
-variable "express_route_gateway_sku" {
-  description = "SKU of the virtual network gateway resource. Possible values are [here](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-about-virtual-network-gateways#gwsku)."
+variable "gateway_sku" {
+  description = "SKU of the Virtual Network Gateway resource. Possible values are [here](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-about-virtual-network-gateways#gwsku)."
   type        = string
   default     = "Standard"
 }
 
-variable "express_route_circuit_peerings" {
+variable "circuit_peerings" {
   description = "Configuration block of Private, Public and Microsoft ExpressRoute Circuit Peerings."
   type = list(object({
     peering_type                  = string
@@ -125,56 +125,56 @@ variable "express_route_circuit_peerings" {
   }))
 }
 
-variable "express_route_circuit_peering_enabled" {
-  description = "Enable or disable Express Route Circuit Peering configuration. (Should be disable at start. When the ExpressRoute circuit status is 'Provisioned', enable it.)"
+variable "circuit_peering_enabled" {
+  description = "Enable or disable Express Route Circuit Peering configuration. (Should be disabled during circuit provisioning. When the ExpressRoute circuit status is 'Provisioned', enable it.)"
   type        = bool
 }
 
-variable "express_route_gateway_enabled" {
+variable "gateway_enabled" {
   description = "Enable or disable creation of the Virtual Network Gateway."
   type        = bool
   default     = true
 }
 
-variable "express_route_gateway_connection_route_weight" {
+variable "connection_route_weight" {
   description = "The routing weight of the ExpressRoute Gateway connection."
   type        = number
   default     = 10
 }
 
-variable "express_route_circuit_enabled" {
+variable "circuit_enabled" {
   description = "Whether to create the ExpressRoute Circuit or not."
   type        = bool
   default     = true
 }
 
-variable "express_route_circuit_id" {
+variable "circuit_id" {
   description = "ExpressRoute Circuit ID if not managed by this module."
   type        = string
   default     = null
 }
 
-variable "express_route_circuit_connected" {
+variable "circuit_connected" {
   description = "Whether the ExpressRoute Circuit is connected or not."
   type        = bool
   default     = true
 }
 
-variable "express_route_circuit_authorization_key" {
+variable "circuit_authorization_key" {
   description = "The authorization key to use for the ExpressRoute Circuit."
   type        = string
   sensitive   = true
   default     = null
 }
 
-variable "express_route_gateway_remote_vnet_traffic_enabled" {
-  description = "Whether to allow remote VNet traffic to flow through the ExpressRoute Gateway."
+variable "remote_vnet_traffic_enabled" {
+  description = "Whether to allow remote VNet traffic flow through the ExpressRoute Gateway."
   type        = bool
   default     = false
 }
 
-variable "express_route_gateway_virtual_wan_traffic_enabled" {
-  description = "Whether to allow Virtual WAN traffic to flow through the ExpressRoute Gateway."
+variable "virtual_wan_traffic_enabled" {
+  description = "Whether to allow Virtual WAN traffic flow through the ExpressRoute Gateway."
   type        = bool
   default     = false
 }

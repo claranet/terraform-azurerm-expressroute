@@ -3,9 +3,9 @@ locals {
   name_prefix = lower(var.name_prefix)
   name_suffix = lower(var.name_suffix)
 
-  erc_name                              = coalesce(var.custom_express_route_circuit_name, data.azurecaf_name.erc.result)
-  vgw_name                              = coalesce(var.custom_express_route_gateway_name, data.azurecaf_name.ergw.result)
-  pub_ip_name                           = coalesce(var.custom_public_ip_name, data.azurecaf_name.pub_ip.result)
-  express_route_gateway_ipconfig_name   = coalesce(var.custom_express_route_gateway_ipconfig_name, data.azurecaf_name.ergw_ipconfig.result)
-  express_route_gateway_connection_name = coalesce(var.custom_express_route_gateway_connection_name, data.azurecaf_name.ergw_connection.result)
+  circuit_name    = coalesce(var.circuit_custom_name, data.azurecaf_name.erc.result)
+  gateway_name    = coalesce(var.gateway_custom_name, data.azurecaf_name.ergw.result)
+  pub_ip_name     = coalesce(var.public_ip_custom_name, data.azurecaf_name.pub_ip.result)
+  ipconfig_name   = coalesce(var.gateway_ipconfig_custom_name, data.azurecaf_name.ergw_ipconfig.result)
+  connection_name = coalesce(var.connection_custom_name, data.azurecaf_name.ergw_connection.result)
 }
