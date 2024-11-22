@@ -1,3 +1,28 @@
+## 7.5.0 (2024-11-22)
+
+### Features
+
+* **AZ-1483:** allow to manage gateway subnet default outbound access b1ae89e
+
+### Miscellaneous Chores
+
+* **AZ-1483:** apply suggestion 6d7cd7b
+* **deps:** update dependency claranet/diagnostic-settings/azurerm to v7 94c75c5
+* **deps:** update dependency claranet/subnet/azurerm to v7.2.0 4e68c2e
+* **deps:** update dependency opentofu to v1.8.3 db73e1a
+* **deps:** update dependency opentofu to v1.8.4 8e20581
+* **deps:** update dependency pre-commit to v4 f04a4e4
+* **deps:** update dependency pre-commit to v4.0.1 2da3784
+* **deps:** update dependency tflint to v0.54.0 0516a20
+* **deps:** update dependency trivy to v0.56.1 c440e84
+* **deps:** update dependency trivy to v0.56.2 15b337a
+* **deps:** update dependency trivy to v0.57.1 bd2024c
+* **deps:** update pre-commit hook pre-commit/pre-commit-hooks to v5 983a222
+* **deps:** update pre-commit hook tofuutils/pre-commit-opentofu to v2.1.0 9eb4989
+* **deps:** update tools d5c18bd
+* prepare for new examples structure 6a75c2f
+* update examples structure ec1b66e
+
 ## 7.4.0 (2024-10-03)
 
 ### Features
