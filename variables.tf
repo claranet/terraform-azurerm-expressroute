@@ -60,7 +60,7 @@ variable "virtual_network_name" {
   type        = string
 }
 
-variable "subnet_cidr" {
+variable "subnet_cidrs" {
   description = "The address prefix list to use for the subnet."
   type        = list(string)
   default     = null

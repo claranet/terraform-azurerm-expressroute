@@ -33,17 +33,16 @@ resource "azurerm_express_route_circuit_peering" "main" {
   secondary_peer_address_prefix = each.value.secondary_peer_address_prefix
   peer_asn                      = each.value.peer_asn
   vlan_id                       = each.value.vlan_id
-  shared_key                    = lookup(each.value, "shared_key", null)
+  shared_key                    = each.value.shared_key
 
-  route_filter_id = each.value.peering_type == "MicrosoftPeering" ? lookup(each.value, "route_filter_id", null) : null
+  route_filter_id = each.value.peering_type == "MicrosoftPeering" ? each.value.route_filter_id : null
 
   dynamic "microsoft_peering_config" {
-    for_each = each.value.peering_type == "MicrosoftPeering" && each.value.microsoft_peering_config != null ? [each.value.microsoft_peering_config] : []
-
+    for_each = each.value.peering_type == "MicrosoftPeering" ? each.value.microsoft_peering_config[*]
     content {
-      advertised_public_prefixes = lookup(microsoft_peering_config.value, "advertised_public_prefixes", null)
-      customer_asn               = lookup(microsoft_peering_config.value, "customer_asn", null)
-      routing_registry_name      = lookup(microsoft_peering_config.value, "routing_registry_name", null)
+      advertised_public_prefixes = microsoft_peering_config.value.advertised_public_prefixes
+      customer_asn               = microsoft_peering_config.value.customer_asn
+      routing_registry_name      = microsoft_peering_config.value.routing_registry_name
     }
   }
 }

@@ -19,7 +19,7 @@ resource "azurerm_virtual_network_gateway" "main" {
     content {
       name                 = format("%s%s", local.ipconfig_name, local.public_ip_count > 1 ? "-0${ip_configuration.value}" : "")
       public_ip_address_id = azurerm_public_ip.main[ip_configuration.value - 1].id
-      subnet_id            = var.subnet_cidr != null ? module.subnet[0].id : var.subnet_id
+      subnet_id            = coalesce(one(module.subnet[*].id), var.subnet_id)
     }
   }
   tags = merge(local.default_tags, var.extra_tags, var.gateway_extra_tags)
@@ -58,9 +58,9 @@ resource "azurerm_virtual_network_gateway_connection" "main" {
   resource_group_name = var.resource_group_name
 
   type                           = "ExpressRoute"
-  express_route_circuit_id       = var.circuit_enabled ? azurerm_express_route_circuit.main[0].id : var.circuit_id
+  express_route_circuit_id       = coalesce(one(azurerm_express_route_circuit.main[*].id), var.circuit_id)
   authorization_key              = var.circuit_authorization_key
-  virtual_network_gateway_id     = azurerm_virtual_network_gateway.main[0].id
+  virtual_network_gateway_id     = one(azurerm_virtual_network_gateway.main[*].id)
   local_azure_ip_address_enabled = false
   routing_weight                 = var.connection_route_weight
 

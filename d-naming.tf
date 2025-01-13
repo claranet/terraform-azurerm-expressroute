@@ -31,7 +31,7 @@ data "azurecaf_name" "pub_ip" {
 data "azurecaf_name" "ergw_ipconfig" {
   name          = var.stack
   resource_type = "azurerm_public_ip"
-  prefixes      = compact(["ergwipconfig", local.name_prefix])
+  prefixes      = compact([local.name_prefix, "ergwipconfig"])
   suffixes      = compact([var.client_name, var.location_short, var.environment, local.name_suffix])
   use_slug      = false
   clean_input   = true
@@ -41,7 +41,7 @@ data "azurecaf_name" "ergw_ipconfig" {
 data "azurecaf_name" "ergw_connection" {
   name          = var.stack
   resource_type = "azurerm_vpn_gateway_connection"
-  prefixes      = compact(["ergwc", local.name_prefix])
+  prefixes      = compact([local.name_prefix, "ergwc"])
   suffixes      = compact([var.client_name, var.location_short, var.environment, local.name_suffix])
   use_slug      = false
   clean_input   = true
