@@ -59,7 +59,7 @@ module "express_route" {
   bandwidth_in_mbps     = 50
 
   virtual_network_name = module.azure_virtual_network.name
-  subnet_cidr          = ["10.10.0.0/27"]
+  subnet_cidrs         = ["10.10.0.0/27"]
 
   # Enable when the ExpressRoute Circuit status is provisioned
   circuit_peering_enabled = false
