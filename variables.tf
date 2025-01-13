@@ -78,12 +78,6 @@ variable "subnet_id" {
   default     = null
 }
 
-variable "public_ip_sku" {
-  description = "SKU of public IP resource. Possible values are `Basic` or `Standard`."
-  type        = string
-  default     = "Standard"
-}
-
 variable "public_ip_allocation_method" {
   description = "Defines the allocation method for this IP address. Possible values are `Static` or `Dynamic`."
   type        = string
@@ -117,6 +111,7 @@ variable "circuit_peerings" {
     peer_asn                      = number
     vlan_id                       = number
     shared_key                    = optional(string)
+    route_filter_id               = optional(string)
     microsoft_peering_config = optional(object({
       advertised_public_prefixes = list(string)
       customer_asn               = optional(number)

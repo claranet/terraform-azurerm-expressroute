@@ -117,7 +117,7 @@ module "express_route" {
 | circuit\_extra\_tags | Extra tags to add for ExpressRoute Circuit resource. | `map(string)` | `{}` | no |
 | circuit\_id | ExpressRoute Circuit ID if not managed by this module. | `string` | `null` | no |
 | circuit\_peering\_enabled | Enable or disable Express Route Circuit Peering configuration. (Should be disabled during circuit provisioning. When the ExpressRoute circuit status is 'Provisioned', enable it.) | `bool` | n/a | yes |
-| circuit\_peerings | Configuration block of Private, Public and Microsoft ExpressRoute Circuit Peerings. | <pre>list(object({<br/>    peering_type                  = string<br/>    primary_peer_address_prefix   = string<br/>    secondary_peer_address_prefix = string<br/>    peer_asn                      = number<br/>    vlan_id                       = number<br/>    shared_key                    = optional(string)<br/>    microsoft_peering_config = optional(object({<br/>      advertised_public_prefixes = list(string)<br/>      customer_asn               = optional(number)<br/>      routing_registry_name      = optional(string)<br/>    }))<br/>  }))</pre> | n/a | yes |
+| circuit\_peerings | Configuration block of Private, Public and Microsoft ExpressRoute Circuit Peerings. | <pre>list(object({<br/>    peering_type                  = string<br/>    primary_peer_address_prefix   = string<br/>    secondary_peer_address_prefix = string<br/>    peer_asn                      = number<br/>    vlan_id                       = number<br/>    shared_key                    = optional(string)<br/>    route_filter_id               = optional(string)<br/>    microsoft_peering_config = optional(object({<br/>      advertised_public_prefixes = list(string)<br/>      customer_asn               = optional(number)<br/>      routing_registry_name      = optional(string)<br/>    }))<br/>  }))</pre> | n/a | yes |
 | client\_name | Name of client. | `string` | n/a | yes |
 | connection\_custom\_name | Custom ExpressRoute Gateway Connection resource name. | `string` | `null` | no |
 | connection\_extra\_tags | Extra tags to add for ExpressRoute Gateway Connection resource. | `map(string)` | `{}` | no |
@@ -143,13 +143,12 @@ module "express_route" {
 | public\_ip\_allocation\_method | Defines the allocation method for this IP address. Possible values are `Static` or `Dynamic`. | `string` | `"Static"` | no |
 | public\_ip\_custom\_name | Custom public IP resource name. | `string` | `null` | no |
 | public\_ip\_extra\_tags | Extra tags to add for public IP resource. | `map(string)` | `{}` | no |
-| public\_ip\_sku | SKU of public IP resource. Possible values are `Basic` or `Standard`. | `string` | `"Standard"` | no |
 | public\_ip\_zones | List of availability zone for the public IP resource. | `list(number)` | <pre>[<br/>  1,<br/>  2,<br/>  3<br/>]</pre> | no |
 | remote\_vnet\_traffic\_enabled | Whether to allow remote VNet traffic flow through the ExpressRoute Gateway. | `bool` | `false` | no |
 | resource\_group\_name | Name of the application's resource group. | `string` | n/a | yes |
 | service\_provider\_name | The name of the ExpressRoute [Service Provider](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-locations-providers#partners). | `string` | n/a | yes |
 | stack | Name of application's stack. | `string` | n/a | yes |
-| subnet\_cidr | The address prefix list to use for the subnet. | `list(string)` | `null` | no |
+| subnet\_cidrs | The address prefix list to use for the subnet. | `list(string)` | `null` | no |
 | subnet\_default\_outbound\_access\_enabled | Whether to allow default outbound traffic from the subnet. | `bool` | `false` | no |
 | subnet\_id | ID of an existing subnet gateway. | `string` | `null` | no |
 | virtual\_network\_name | Virtual network name. | `string` | n/a | yes |

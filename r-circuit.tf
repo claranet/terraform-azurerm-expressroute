@@ -38,7 +38,7 @@ resource "azurerm_express_route_circuit_peering" "main" {
   route_filter_id = each.value.peering_type == "MicrosoftPeering" ? each.value.route_filter_id : null
 
   dynamic "microsoft_peering_config" {
-    for_each = each.value.peering_type == "MicrosoftPeering" ? each.value.microsoft_peering_config[*]
+    for_each = each.value.peering_type == "MicrosoftPeering" ? each.value.microsoft_peering_config[*] : []
     content {
       advertised_public_prefixes = microsoft_peering_config.value.advertised_public_prefixes
       customer_asn               = microsoft_peering_config.value.customer_asn

@@ -38,8 +38,8 @@ resource "azurerm_public_ip" "main" {
   location            = var.location
   resource_group_name = var.resource_group_name
   allocation_method   = var.public_ip_allocation_method
-  sku                 = var.public_ip_sku
-  zones               = var.public_ip_sku == "Standard" ? var.public_ip_zones : null
+  sku                 = "Standard"
+  zones               = var.public_ip_zones
 
   tags = merge(local.default_tags, var.extra_tags, var.public_ip_extra_tags)
 }

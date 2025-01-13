@@ -2,7 +2,7 @@ module "subnet" {
   source  = "claranet/subnet/azurerm"
   version = "~> 8.0.1"
 
-  count = var.gateway_enabled && var.subnet_cidr != null ? 1 : 0
+  count = var.gateway_enabled && var.subnet_cidrs != null ? 1 : 0
 
   environment    = var.environment
   location_short = var.location_short
@@ -14,7 +14,7 @@ module "subnet" {
   custom_name = "GatewaySubnet"
 
   virtual_network_name = var.virtual_network_name
-  cidrs                = var.subnet_cidr
+  cidrs                = var.subnet_cidrs
 
   default_outbound_access_enabled = var.subnet_default_outbound_access_enabled
 }
