@@ -1,3 +1,42 @@
+## 8.0.0 (2025-01-17)
+
+### ⚠ BREAKING CHANGES
+
+* **AZ-1088:** module v8 structure and updates
+
+### Features
+
+* **AZ-1088:** force public ip sku to Standard 0a3d157
+* **AZ-1088:** module v8 structure and updates efe7fd5
+
+### Bug Fixes
+
+* **AZ-1088:** bump azurerm to ~> 4.11 d72b6f0
+
+### Documentation
+
+* **AZ-1088:** fix example 97a0f8f
+
+### Miscellaneous Chores
+
+* **AZ-1088:** apply suggestions 8fd0b78
+* **AZ-1088:** apply suggestions 7170570
+* **deps:** update dependency opentofu to v1.8.6 7469117
+* **deps:** update dependency opentofu to v1.8.7 d511e82
+* **deps:** update dependency opentofu to v1.8.8 7833e7f
+* **deps:** update dependency opentofu to v1.9.0 f111cd6
+* **deps:** update dependency tflint to v0.55.0 baeb715
+* **deps:** update dependency trivy to v0.58.0 d0b524d
+* **deps:** update dependency trivy to v0.58.1 a945d46
+* **deps:** update dependency trivy to v0.58.2 82e6967
+* **deps:** update pre-commit hook alessandrojcm/commitlint-pre-commit-hook to v9.19.0 c95c8b9
+* **deps:** update pre-commit hook alessandrojcm/commitlint-pre-commit-hook to v9.20.0 863c256
+* update tflint config for v0.55.0 bc0f4d5
+
+### Revert
+
+* **AZ-1088:** revert part of 7e91caad c826c53
+
 ## 7.5.0 (2024-11-22)
 
 ### Features
