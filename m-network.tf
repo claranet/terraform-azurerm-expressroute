@@ -1,6 +1,6 @@
 module "subnet" {
   source  = "claranet/subnet/azurerm"
-  version = "~> 8.0.1"
+  version = "~> 8.1.0"
 
   count = var.gateway_enabled && var.subnet_cidrs != null ? 1 : 0
 
