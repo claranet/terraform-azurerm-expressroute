@@ -1,6 +1,6 @@
 module "diagnostic_settings" {
   source  = "claranet/diagnostic-settings/azurerm"
-  version = "~> 8.0.0"
+  version = "~> 8.1.0"
 
   count = one(azurerm_express_route_circuit.main[*].id) != null || var.circuit_id != null ? 1 : 0
 
