@@ -80,7 +80,7 @@ module "express_route" {
 | Name | Version |
 |------|---------|
 | azurecaf | ~> 1.2, ~> 1.2.28 |
-| azurerm | ~> 4.11 |
+| azurerm | ~> 4.31 |
 
 ## Modules
 
