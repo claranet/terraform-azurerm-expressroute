@@ -78,21 +78,21 @@ module "express_route" {
 ## Providers
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | azurecaf | >= 1.2.28 |
 | azurerm | ~> 4.31 |
 
 ## Modules
 
 | Name | Source | Version |
-|------|--------|---------|
+| ---- | ------ | ------- |
 | diagnostic\_settings | claranet/diagnostic-settings/azurerm | ~> 8.2.0 |
 | subnet | claranet/subnet/azurerm | ~> 8.1.0 |
 
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [azurerm_express_route_circuit.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/express_route_circuit) | resource |
 | [azurerm_express_route_circuit_peering.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/express_route_circuit_peering) | resource |
 | [azurerm_public_ip.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/public_ip) | resource |
@@ -107,7 +107,7 @@ module "express_route" {
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | active\_active\_enabled | Enable or disable an active-active Virtual Network Gateway. (Require a `HighPerformance` or an ` UltraPerformance` SKU.) | `bool` | `false` | no |
 | bandwidth\_in\_mbps | The Circuit bandwidth in Mbps. | `number` | n/a | yes |
 | circuit\_authorization\_key | The authorization key to use for the ExpressRoute Circuit. | `string` | `null` | no |
@@ -157,7 +157,7 @@ module "express_route" {
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | circuit\_id | The ID of the ExpressRoute Circuit. |
 | circuit\_name | Name of the ExpressRoute Circuit. |
 | circuit\_service\_key | The string needed by the service provider to provision the ExpressRoute Circuit. |
