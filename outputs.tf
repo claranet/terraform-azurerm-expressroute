@@ -37,6 +37,7 @@ output "gateway_id" {
 output "resource" {
   description = "ExpressRoute Gateway resource object."
   value       = azurerm_virtual_network_gateway.main[*]
+  sensitive   = true
 }
 
 output "resource_circuit" {
